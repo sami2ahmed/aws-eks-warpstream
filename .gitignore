@@ -1,0 +1,3 @@
+# Local env / secrets — copy from *.example.*; do not commit
+resources.txt
+warpstream-agent-values.yaml

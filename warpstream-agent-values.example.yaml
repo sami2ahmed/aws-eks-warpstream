@@ -1,0 +1,33 @@
+# Example Helm values for WarpStream Agents on EKS (DEV sizing).
+# Copy to warpstream-agent-values.yaml and fill in real values.
+# Do not commit real agent keys.
+
+config:
+  bucketURL: "s3://ws-dev-apse1-REPLACE?region=ap-southeast-1"
+  agentKey: "aks_REPLACE_ME"
+  virtualClusterID: "vci_REPLACE_ME"
+  region: "ap-southeast-1"
+
+serviceAccount:
+  name: warpstream-agent
+  create: true
+  annotations:
+    eks.amazonaws.com/role-arn: "arn:aws:iam::ACCOUNT_ID:role/warpstream-agent-dev-REPLACE"
+
+# DEV sizing — do not use for production
+# 1 Agent is enough: durability is in S3, not Agent replicas
+# Sized for low throughput (~4 MiB/s) on a single m5.large node
+replicas: 1
+autoscaling:
+  enabled: false
+enforceProductionResourceRequirements: false
+resources:
+  requests:
+    cpu: "1"
+    memory: 4Gi
+    ephemeral-storage: 100Mi
+  limits:
+    memory: 4Gi
+
+dedicatedMetricsPod:
+  enabled: false
