@@ -422,32 +422,32 @@ Store the console values in `resources.txt` (same file as Parts A–B) so a late
 2. [Create a **BYOC** virtual cluster (not Serverless)](https://console.warpstream.com/virtual_clusters/create).
 3. Choose cloud provider **AWS** and region `**ap-southeast-1`** (must match `WS_REGION` in `resources.txt`).
 
-3a. After you confirm the region, the console shows the agent key secret once (starts with `aks_` or `aks_v2_`; for v2 keys it cannot be retrieved later). Put it in `resources.txt` immediately:
+3a. After you confirm the region, the console shows the agent key secret once (starts with `aks_` or `aks_v2_`; for v2 keys it cannot be retrieved later). Copy it right away. Step 4 saves it to `resources.txt`.
 
-```
-```bash
-# In resources.txt:
-WS_AGENT_KEY="aks_REPLACE_ME"
-# WS_REGION should already be "ap-southeast-1" — change it only if you picked a different control plane region
-```
+4. Save the agent key in `resources.txt`:
 
-If this is your first cluster, the in-console **BYOC tutorial** may start next (object storage / deploy walkthrough). Exit / dismiss it after saving the agent key — AWS infra is already done in Parts A–B, and Agent deploy continues in this guide from step 4.
-
-```
-
-4. From the cluster **Overview** page, copy the Virtual Cluster ID (`vci_...`) into `resources.txt`, then re-source:
    ```bash
-     # In resources.txt:
-     WS_VIRTUAL_CLUSTER_ID="vci_REPLACE_ME"
+   # In resources.txt:
+   WS_AGENT_KEY="aks_REPLACE_ME"
+   # WS_REGION should already be "ap-southeast-1" — change it only if you picked a different control plane region
+   ```
 
-     source resources.txt
-```
+   If this is your first cluster, the in-console **BYOC tutorial** may start next (object storage / deploy walkthrough). Exit / dismiss it after saving the agent key — AWS infra is already done in Parts A–B, and Agent deploy continues in this guide from step 5.
 
-```
- Confirm the echo shows `WS_VIRTUAL_CLUSTER_ID=vci_...` and `WS_AGENT_KEY=(set)`.
+5. From the cluster **Overview** page, copy the Virtual Cluster ID (`vci_...`) into `resources.txt`, then re-source:
 
- If you missed the one-time agent key prompt, open the cluster **Agent Keys** tab (or the console **API Keys** sidebar), create a new key, set `WS_AGENT_KEY` in `resources.txt`, and `source resources.txt` again.
-```
+   ```bash
+   # In resources.txt:
+   WS_VIRTUAL_CLUSTER_ID="vci_REPLACE_ME"
+   ```
+
+   ```bash
+   source resources.txt
+   ```
+
+   Confirm the echo shows `WS_VIRTUAL_CLUSTER_ID=vci_...` and `WS_AGENT_KEY=(set)`.
+
+   If you missed the one-time agent key prompt, open the cluster **Agent Keys** tab (or the console **API Keys** sidebar), create a new key, set `WS_AGENT_KEY` in `resources.txt`, and `source resources.txt` again.
 
 ### 7. Create the namespace and Helm values
 
