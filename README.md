@@ -2,7 +2,7 @@
 
 ## Purpose
 
-End-to-end disposable DEV guide to:
+Stands up a WarpStream cluster in an EKS cluster. The WarpStream official repo has a better guide that does so via Terraform, but I know some people might not use TF so hence my repo below. https://github.com/warpstreamlabs/terraform-aws-warpstream-eks. 
 
 1. Create an S3 bucket for WarpStream object storage
 2. Create an EKS cluster with an OIDC identity provider
